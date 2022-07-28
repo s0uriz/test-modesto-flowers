@@ -1,0 +1,179 @@
+<template>
+  <div class="page">
+    <Dialog v-if="showDialog" @close="closeModal">
+      <h2 class="h2 text-center dialog-header">
+        Please answer a few questions
+      </h2>
+      <div class="text-center" v-if="loading">Fetching data...</div>
+      <div v-else>
+        <Stepper :steps="5" :current="currentStep" />
+        <div v-if="currentQuestion">
+          <p class="question-title">{{ currentQuestion.title }}</p>
+          <div v-if="currentQuestion.questions">
+            <div
+              v-for="(question, i) in currentQuestion.questions"
+              :key="i"
+              class="input-box"
+            >
+              <input
+                :id="i"
+                :type="currentQuestion.type"
+                :value="question"
+                v-model="checkboxValue"
+              />
+              <label :for="i">{{ question }}</label>
+            </div>
+          </div>
+          <textarea
+            v-if="currentQuestion.textarea"
+            v-model="text"
+            rows="5"
+            class="textarea textarea-dialog"
+          />
+          <div class="block input-box" v-if="currentQuestion.noAnswer">
+            <input
+              id="allow"
+              type="checkbox"
+              value="I do not want to answer"
+              v-model="checkboxValue"
+            />
+            <label for="allow">I do not want to answer</label>
+          </div>
+        </div>
+        <button
+          class="btn"
+          style="margin-top: 20px"
+          @click="onNext"
+          :disabled="disableBtn"
+        >
+          {{ btnTitle }}
+        </button>
+      </div>
+    </Dialog>
+  </div>
+</template>
+
+<script>
+import Dialog from "@/components/ui/Dialog.vue";
+import Stepper from "@/components/ui/Stepper.vue";
+import { mapState, mapActions } from "vuex";
+
+export default {
+  name: "Home",
+  components: { Dialog, Stepper },
+  computed: {
+    ...mapState(["questions", "loading", "hideModal"]),
+    currentQuestion() {
+      return this.questions[this.currentStep];
+    },
+    disableBtn() {
+      let flag = true;
+      if (this.currentQuestion.questions) {
+        flag = !this.checkboxValue.length;
+      } else {
+        // TODO
+        flag = !this.checkboxValue.length && !this.text.length;
+      }
+      return flag;
+    },
+    btnTitle() {
+      return this.currentStep === 4 ? "Done" : "Next";
+    },
+  },
+  data() {
+    return {
+      showDialog: true,
+      currentStep: 0,
+      checkboxValue: [],
+      results: [],
+      text: "",
+    };
+  },
+  methods: {
+    ...mapActions(["getQuestions"]),
+    onNext() {
+      this.saveResult();
+      switch (this.currentStep) {
+        case 1:
+          if (this.checkboxValue === "Comfortable") {
+            this.currentStep = 3;
+          } else {
+            this.currentStep += 1;
+          }
+          break;
+        case 2:
+          this.currentStep = 4;
+          break;
+        case 4:
+          this.sendData();
+          break;
+        default:
+          this.currentStep += 1;
+      }
+      this.checkboxValue = [];
+      this.text = "";
+    },
+    saveResult() {
+      let item = {
+        title: this.currentQuestion.title,
+      };
+      if (this.text) {
+        item.text = this.text;
+      }
+      if (this.checkboxValue.length) {
+        item.value = this.checkboxValue;
+      }
+      this.results.push(item);
+    },
+    sendData() {
+      // send data to backend
+      setTimeout(() => {
+        this.closeModal();
+      }, 1500);
+    },
+    closeModal() {
+      this.showDialog = false;
+      localStorage.setItem("hideModal", true);
+    },
+  },
+  created() {
+    if (this.hideModal) {
+      this.showDialog = false;
+    } else {
+      this.getQuestions();
+    }
+  },
+};
+</script>
+
+<style lang="scss">
+.dialog-header {
+  margin-bottom: 50px;
+}
+.textarea-dialog {
+  width: 50%;
+  margin: 20px 0 10px;
+}
+.input-box {
+  display: flex;
+  align-items: center;
+  margin: 12px 0;
+}
+.question-title {
+  margin: 30px 0 40px;
+  font-size: 15px;
+  font-weight: 500;
+}
+.btn {
+  width: 133px;
+  height: 40px;
+  background: #4bbdfd;
+  border-radius: 5px;
+  box-shadow: none;
+  border: 0;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+}
+</style>

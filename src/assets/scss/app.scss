@@ -1,0 +1,117 @@
+// reset styles
+*, *:before, *:after{
+	box-sizing: border-box;
+}
+
+html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, code, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td, main, canvas, embed, footer, header, nav, section, video{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	text-size-adjust: none;
+}
+
+footer, header, nav, section, main{
+	display: block;
+}
+
+body{
+	line-height: 1;
+}
+
+ol, ul{
+	list-style: none;
+}
+
+blockquote, q{
+	quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after{
+	content: '';
+	content: none;
+}
+
+table{
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+input{
+	-webkit-appearance: none;
+	border-radius: 0;
+}
+
+// app styles
+
+#app {
+  font-family: "Roboto Mono", monospace;
+}
+
+.page {
+	width: 960px;
+  margin: 0 auto;
+}
+.h2 {font-weight: 700; font-size: 18px;}
+.text-center { text-align: center;}
+.block {display: block}
+.textarea {
+  background: #e6e6e6;
+  border: 2px solid #b3b3b3;
+  border-radius: 5px;
+  &:focus {
+    border: 2px solid #b3b3b3;
+    outline: none !important;
+  }
+}
+input[type="radio"], input[type="checkbox"]{
+	margin: 0 15px 0 0;
+	margin-right: 15px;
+	position: relative;
+	width: 18px;
+	height: 18px;
+	&::before{
+		content: "";
+		position: absolute;
+		display: inline-block;
+		width: 18px;
+		height: 18px;
+		border: 1px solid #B3B3B3;
+		border-radius: 50%;
+		background-color: #E6E6E6;
+	}
+	&::after{
+		content: '\2713';
+		position: absolute;
+		display: none;
+		font-size: 14px;
+		font-weight: bold;
+		left: 3px;
+		color: white;
+
+	}
+	&:checked{
+		&::before{
+			background-color: #B3B3B3;
+		}
+		&::after{
+			display: inline-block;
+		}
+	}
+}
+
+input[type="checkbox"]{
+	&::before{
+		border-radius: 2px;
+	}
+}
+
+button:disabled,
+button[disabled]{
+  background-color: #87d0fa;
+	cursor: not-allowed;
+}

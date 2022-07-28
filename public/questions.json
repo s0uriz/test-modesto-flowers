@@ -1,0 +1,46 @@
+[
+  {
+    "title": "How often do you visit our site? (1/5)",
+    "questions": [
+      "A couple of times a month",
+      "Once a week",
+      "Few times a week",
+      "Every day",
+      "Several times a day"
+    ],
+    "type": "radio"
+  },
+  {
+    "title": "Are you comfortable using our site? (2/5)",
+    "questions": [
+      "Comfortable",
+      "Not very comfortable",
+      "Very uncomfortable"
+    ],
+    "type": "radio"
+  },
+  {
+    "title": "Tell us what exactly you do not like? (3/5)",
+    "questions": null,
+    "type": "radio",
+    "textarea": true,
+    "noAnswer": true
+  },
+  {
+    "title": "Tell us what you like most about our site? (4/5)",
+    "questions": null,
+    "textarea": true,
+    "noAnswer": true
+  },
+  {
+    "title": "What changes would you like? (5/5)",
+    "questions": [
+      "Design change",
+      "Newsletter",
+      "Online consultations",
+      "Your answer"
+    ],
+    "type": "checkbox",
+    "textarea": true
+  }
+]
