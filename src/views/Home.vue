@@ -64,14 +64,15 @@ export default {
   computed: {
     ...mapState(["questions", "loading", "hideModal"]),
     currentQuestion() {
-      return this.questions[this.currentStep];
+      return this.questions.length > 0
+        ? this.questions[this.currentStep]
+        : null;
     },
     disableBtn() {
       let flag = true;
-      if (this.currentQuestion.questions) {
+      if (this.currentQuestion?.questions) {
         flag = !this.checkboxValue.length;
       } else {
-        // TODO
         flag = !this.checkboxValue.length && !this.text.length;
       }
       return flag;
@@ -126,7 +127,7 @@ export default {
       this.results.push(item);
     },
     sendData() {
-      // send data to backend
+      // send this.results to backend
       setTimeout(() => {
         this.closeModal();
       }, 1500);
