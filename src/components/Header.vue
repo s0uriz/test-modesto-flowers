@@ -4,10 +4,10 @@
       <img src="@/assets/logo.svg" alt="Logo" class="logo" />
       <div class="nav">
         <router-link to="/">Home</router-link>
-        <router-link to="/about">Catalog</router-link>
-        <router-link to="/about">Tenders</router-link>
-        <router-link to="/about">Trade</router-link>
-        <router-link to="/about">Web-Shop NL</router-link>
+        <router-link to="/">Catalog</router-link>
+        <router-link to="/">Tenders</router-link>
+        <router-link to="/">Trade</router-link>
+        <router-link to="/">Web-Shop NL</router-link>
       </div>
     </div>
   </header>
