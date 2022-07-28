@@ -40,12 +40,7 @@
             <label for="allow">I do not want to answer</label>
           </div>
         </div>
-        <button
-          class="btn"
-          style="margin-top: 20px"
-          @click="onNext"
-          :disabled="disableBtn"
-        >
+        <button class="btn" @click="onNext" :disabled="disableBtn">
           {{ btnTitle }}
         </button>
       </div>
@@ -176,5 +171,6 @@ export default {
   font-weight: 700;
   font-size: 14px;
   cursor: pointer;
+  margin-top: 20px;
 }
 </style>
