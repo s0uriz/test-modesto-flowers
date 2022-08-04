@@ -34,8 +34,8 @@ export default {
   cursor: pointer;
   margin-top: 20px;
 }
-button:disabled,
-button[disabled] {
+.btn:disabled,
+.btn[disabled] {
   background-color: #87d0fa;
   cursor: not-allowed;
 }
