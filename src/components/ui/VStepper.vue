@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: "Stepper",
+  name: "VStepper",
   props: {
     steps: {
       type: Number,
@@ -29,7 +29,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .stepper {
   &-wrap {
     display: flex;

@@ -1,6 +1,6 @@
 <template>
-  <div class="dialog-wrap">
-    <div class="dialog-content">
+  <div class="dialog-wrap" @click="$emit('close')">
+    <div class="dialog-content" @click.stop>
       <span class="close" @click="$emit('close')">&times;</span>
       <slot></slot>
     </div>
@@ -9,11 +9,11 @@
 
 <script>
 export default {
-  name: "Dialog",
+  name: "VDialog",
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .dialog {
   &-wrap {
     position: fixed;

@@ -1,12 +1,12 @@
 <template>
   <div class="page">
-    <Dialog v-if="showDialog" @close="closeModal">
+    <v-dialog v-if="showDialog" @close="closeModal">
       <h2 class="h2 text-center dialog-header">
         Please answer a few questions
       </h2>
       <div class="text-center" v-if="loading">Fetching data...</div>
       <div v-else>
-        <Stepper :steps="5" :current="currentStep" />
+        <v-stepper :steps="5" :current="currentStep"></v-stepper>
         <div v-if="currentQuestion">
           <p class="question-title">{{ currentQuestion.title }}</p>
           <div v-if="currentQuestion.questions">
@@ -44,18 +44,17 @@
           {{ btnTitle }}
         </v-button>
       </div>
-    </Dialog>
+    </v-dialog>
   </div>
 </template>
 
 <script>
-import Dialog from "@/components/ui/Dialog.vue";
-import Stepper from "@/components/ui/Stepper.vue";
+import VStepper from "@/components/ui/VStepper.vue";
 import { mapState, mapActions } from "vuex";
 
 export default {
   name: "Home",
-  components: { Dialog, Stepper },
+  components: { VStepper },
   computed: {
     ...mapState(["questions", "loading", "hideModal"]),
     currentQuestion() {
