@@ -59,15 +59,7 @@ input{
 .h2 {font-weight: 700; font-size: 18px;}
 .text-center { text-align: center;}
 .block {display: block}
-.textarea {
-  background: #e6e6e6;
-  border: 2px solid #b3b3b3;
-  border-radius: 5px;
-  &:focus {
-    border: 2px solid #b3b3b3;
-    outline: none !important;
-  }
-}
+
 input[type="radio"], input[type="checkbox"]{
 	margin: 0 15px 0 0;
 	margin-right: 15px;
