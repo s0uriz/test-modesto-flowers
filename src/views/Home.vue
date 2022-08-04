@@ -40,9 +40,9 @@
             <label for="allow">I do not want to answer</label>
           </div>
         </div>
-        <button class="btn" @click="onNext" :disabled="disableBtn">
+        <v-button @click.native="onNext" :disabled="disableBtn">
           {{ btnTitle }}
-        </button>
+        </v-button>
       </div>
     </Dialog>
   </div>
@@ -88,6 +88,7 @@ export default {
   methods: {
     ...mapActions(["getQuestions"]),
     onNext() {
+      console.log("ervgever");
       this.saveResult();
       switch (this.currentStep) {
         case 1:
@@ -159,18 +160,5 @@ export default {
   margin: 30px 0 40px;
   font-size: 15px;
   font-weight: 500;
-}
-.btn {
-  width: 133px;
-  height: 40px;
-  background: #4bbdfd;
-  border-radius: 5px;
-  box-shadow: none;
-  border: 0;
-  color: white;
-  font-weight: 700;
-  font-size: 14px;
-  cursor: pointer;
-  margin-top: 20px;
 }
 </style>

@@ -109,9 +109,3 @@ input[type="checkbox"]{
 		border-radius: 2px;
 	}
 }
-
-button:disabled,
-button[disabled]{
-  background-color: #87d0fa;
-	cursor: not-allowed;
-}
