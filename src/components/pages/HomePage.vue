@@ -9,6 +9,7 @@
         <v-stepper :steps="5" :current="currentStep"></v-stepper>
         <div v-if="currentQuestion">
           <p class="question-title">{{ currentQuestion.title }}</p>
+
           <div
             v-for="(question, i) in currentQuestion.questions"
             :key="i"
