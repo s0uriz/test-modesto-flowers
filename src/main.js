@@ -8,6 +8,7 @@ import VueAxios from "vue-axios";
 import VButton from "@/components/ui/VButton.vue";
 import VDialog from "@/components/ui/VDialog.vue";
 import VTextarea from "@/components/ui/VTextarea.vue";
+import VCheckbox from "@/components/ui/VCheckbox.vue";
 
 Vue.config.productionTip = false;
 Vue.use(VueAxios, axios);
@@ -15,6 +16,7 @@ Vue.use(VueAxios, axios);
 Vue.component("v-button", VButton);
 Vue.component("v-dialog", VDialog);
 Vue.component("v-textarea", VTextarea);
+Vue.component("v-checkbox", VCheckbox);
 
 new Vue({
   router,

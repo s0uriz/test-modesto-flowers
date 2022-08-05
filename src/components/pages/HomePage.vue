@@ -84,7 +84,6 @@ export default {
   methods: {
     ...mapActions(["getQuestions"]),
     onNext() {
-      console.log("ervgever");
       this.saveResult();
       switch (this.currentStep) {
         case 1:
