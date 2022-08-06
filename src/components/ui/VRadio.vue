@@ -48,9 +48,10 @@ export default {
 <style lang="scss" scoped>
 .radio {
   padding-left: 1.6em;
+  font-size: 12px;
   &__wrap {
     display: block;
-    margin: 0.8em 0;
+    margin: 1.3em 0;
     &--disabled {
       opacity: 0.6;
       cursor: not-allowed;
