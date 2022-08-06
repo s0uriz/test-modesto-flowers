@@ -19,7 +19,6 @@ export default {
       type: String,
     },
   },
-  emits: ["update:modelValue"],
 };
 </script>
 

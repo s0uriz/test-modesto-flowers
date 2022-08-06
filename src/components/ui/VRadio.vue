@@ -10,6 +10,7 @@
       :disabled="disabled"
       :value="inputValue"
       v-model="model"
+      name="radio"
     />
     <span class="radio__box"></span>
     <slot></slot>
@@ -65,10 +66,12 @@ export default {
     &:checked + .radio__box {
       background-color: #b3b3b3;
       background-image: url(~@/assets/check.svg);
-      background-size: contain;
+      background-size: 80%;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
     }
     // Focus
-    // &:focus + .check__box {
+    // &:focus + .radio__box {
     //   box-shadow: 0 0 0 0.1em #4bbdfd;
     // }
   }

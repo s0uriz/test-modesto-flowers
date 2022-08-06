@@ -65,7 +65,9 @@ export default {
     &:checked + .check__box {
       background-color: #b3b3b3;
       background-image: url(~@/assets/check.svg);
-      background-size: contain;
+      background-size: 80%;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
     }
     // Focus
     // &:focus + .check__box {
