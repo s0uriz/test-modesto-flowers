@@ -4,39 +4,39 @@
       <h2 class="h2 text-center dialog-header">
         Please answer a few questions
       </h2>
-      <div class="text-center" v-if="loading">Fetching data...</div>
+      <div v-if="loading" class="text-center">Fetching data...</div>
       <div v-else>
         <v-stepper :steps="5" :current="currentStep"></v-stepper>
         <div v-if="currentQuestion">
           <p class="question-title">{{ currentQuestion.title }}</p>
-
-          <div
-            v-for="(question, i) in currentQuestion.questions"
-            :key="i"
-            class="input-box"
-          >
-            <input
-              :id="i"
-              :type="currentQuestion.type"
-              :value="question"
+          <div v-for="(question, i) in currentQuestion.questions" :key="i">
+            <v-radio
+              v-if="currentQuestion.type === 'radio'"
               v-model="checkboxValue"
-            />
-            <label :for="i">{{ question }}</label>
+              :inputValue="question"
+            >
+              {{ question }}
+            </v-radio>
+            <v-checkbox
+              v-if="currentQuestion.type === 'checkbox'"
+              v-model="checkboxValue"
+              :inputValue="question"
+            >
+              {{ question }}
+            </v-checkbox>
           </div>
           <v-textarea
             v-if="currentQuestion.textarea"
             v-model="text"
             class="textarea-dialog"
           ></v-textarea>
-          <div class="block input-box" v-if="currentQuestion.noAnswer">
-            <input
-              id="allow"
-              type="checkbox"
-              value="I do not want to answer"
-              v-model="checkboxValue"
-            />
-            <label for="allow">I do not want to answer</label>
-          </div>
+          <v-checkbox
+            v-if="currentQuestion.noAnswer"
+            v-model="checkboxValue"
+            inputValue="I do not want to answer"
+          >
+            I do not want to answer
+          </v-checkbox>
         </div>
         <v-button @click.native="onNext" :disabled="disableBtn">
           {{ btnTitle }}
